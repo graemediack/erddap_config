@@ -1,23 +1,31 @@
-    1  sudo apt update
-    2  sudo apt upgrade
-    3  sudo apt install default-jdk
-    4  sudo groupadd tomcat
-    5  sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
-    6  cd /tmp
-    7  curl -0 https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
-    8  ls
-    9  curl -O https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
-   10  ls
-   11  sudo mkdir /opt/tomcat
-   12  sudo tar xzvf apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
-   13  sudo /opt/tomcat
-   14  cd /opt/tomcat
-   15  sudo chgrp -R tomcat /opt/tomcat
-   16  sudo chmod -R g+r conf
-   17  sudo chmod g+x conf
-   18  sudo chown -R tomcat webapps/ work/ temp/ logs/
-   19  sudo update-java-alternatives -l
-   20  sudo nano /etc/systemd/system/tomcat.service
+#update system
+sudo apt update
+sudo apt upgrade
+#install JDK
+sudo apt install default-jdk
+###
+#Install and configure Tomcat
+###
+#create tomcat group and user
+sudo groupadd tomcat
+sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+#download tomcat
+cd /tmp
+wget https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
+#create tomcat home directory
+sudo mkdir /opt/tomcat
+#unpack tomcat files to tomcat home directory
+sudo tar xzvf apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
+#modify ACLS (file permissions) of tomcat directory structure
+sudo chgrp -R tomcat /opt/tomcat
+sudo chmod -R g+r /opt/tomcat/conf
+sudo chmod g+x /opt/tomcat/conf
+sudo chown -R tomcat /opt/tomcat/webapps/ /opt/tomcat/work/ /opt/tomcat/temp/ /opt/tomcat/logs/
+#create systemd service file (pull from github repo)
+cp erddap_config/files/tomcat.service /etc/systemd/system/tomcat.service
+#May require editing of JAVA_HOME and Memory Allocation
+#JAVA_HOME = sudo update-java-alternatives -l
+#sudo nano /etc/systemd/system/tomcat.service
    21  sudo systemctl daemon-reload
    22  sudo systemctl start tomcat
    23  sudo systemctl status tomcat
@@ -58,9 +66,6 @@
    58  sudo nano /etc/apache2/apache2.conf
    59  sudo find / -name apachectl
    60  /usr/sbin/apachectl -k graceful
-   61  wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddap.war
-   62  sudo reboot
-   63  ls -l /tmp
    64  wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddap.war
    65  ls
    66  mv erddap.war /opt/tomcat/webapps/erddap.war
@@ -76,4 +81,3 @@
    76  mkdir erddap_config
    77  ls
    78  cd erddap_config/
-   79  history >> history.txt
