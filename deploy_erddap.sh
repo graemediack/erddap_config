@@ -30,7 +30,7 @@ chmod -R g+r /opt/tomcat/conf
 chmod g+x /opt/tomcat/conf
 chown -R tomcat /opt/tomcat/webapps/ /opt/tomcat/work/ /opt/tomcat/temp/ /opt/tomcat/logs/
 #create systemd service file (pull from github repo)
-cp erddap_config/files/tomcat.service /etc/systemd/system/tomcat.service
+cp ~/erddap_config/files/tomcat.service /etc/systemd/system/tomcat.service
 #May require editing of JAVA_HOME and Memory Allocation
 #JAVA_HOME = sudo update-java-alternatives -l
 #sudo nano /etc/systemd/system/tomcat.service
@@ -46,9 +46,9 @@ systemctl daemon-reload
 systemctl enable tomcat
 #configure tomcat user for management interfaces
 #copy files from git repo
-cp erddap_config/files/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
-cp erddap_config/files/mgr_context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
-cp erddap_config/files/hmgr_context.xml /opt/tomcat/webapps/host-manager/META-INF/context.xml
+cp ~/erddap_config/files/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
+cp ~/erddap_config/files/mgr_context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
+cp ~/erddap_config/files/hmgr_context.xml /opt/tomcat/webapps/host-manager/META-INF/context.xml
 #edit files if required (recommend edit tomcat-users.xml to more appropriate password)
 #sudo nano /opt/tomcat/conf/tomcat-users.xml
 #sudo nano /opt/tomcat/webapps/manager/META-INF/context.xml
@@ -62,7 +62,7 @@ read -n 1 -s -r -p "install and configure apache..."
 #Install apache2 (TODO: is this required?)
 apt install apache2
 #apply changes to apache2.conf as per ERDDAP instructions
-cp erddap_config/files/apache2.conf /etc/apache2/apache2.conf
+cp ~/erddap_config/files/apache2.conf /etc/apache2/apache2.conf
 #sudo nano /etc/apache2/apache2.conf
 ###
 echo "Finished - Install and configure apache"
@@ -71,14 +71,14 @@ read -n 1 -s -r -p "install and configure ERDDAP content..."
 ###
 #Deploy and configure ERDDAP content zip file
 unzip erddapContent.zip
-mv content /opt/tomcat/
+mv /tmp/content /opt/tomcat/
 chown -R tomcat:tomcat /opt/tomcat/content
 #create bigParentDirectory (location optional, but must be represented in setup.xml
 mkdir /home/erddap
 chown -R tomcat:tomcat /home/erddap
-cp erddap_config/files/setup.xml /opt/tomcat/content/erddap/setup.xml
-cp erddap_config/files/server.xml /opt/tomcat/conf/server.xml
-cp erddap_config/files/context.xml /opt/tomcat/conf/context.xml
+cp ~/erddap_config/files/setup.xml /opt/tomcat/content/erddap/setup.xml
+cp ~/erddap_config/files/server.xml /opt/tomcat/conf/server.xml
+cp ~/erddap_config/files/context.xml /opt/tomcat/conf/context.xml
 #sudo nano /opt/tomcat/content/erddap/setup.xml - hostname must be updated
 #sudo nano /opt/tomcat/conf/server.xml
 #sudo nano /opt/tomcat/conf/context.xml
