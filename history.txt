@@ -3,19 +3,26 @@ sudo apt update
 sudo apt upgrade
 #install JDK
 sudo apt install default-jdk
+#install unzip
+sudo apt install unzip
+###
+#Download files (note: tmp dir will clear out on reboots, optionally download to homedir and add step to delete at the end)
+cd /tmp
+wget https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
+wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddapContent.zip
+wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddap.war
+###
+
 ###
 #Install and configure Tomcat
-###
 #create tomcat group and user
 sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 #download tomcat
-cd /tmp
-wget https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
 #create tomcat home directory
 sudo mkdir /opt/tomcat
 #unpack tomcat files to tomcat home directory
-sudo tar xzvf apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
+sudo tar xzvf /tmp/apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
 #modify ACLS (file permissions) of tomcat directory structure
 sudo chgrp -R tomcat /opt/tomcat
 sudo chmod -R g+r /opt/tomcat/conf
@@ -26,58 +33,58 @@ cp erddap_config/files/tomcat.service /etc/systemd/system/tomcat.service
 #May require editing of JAVA_HOME and Memory Allocation
 #JAVA_HOME = sudo update-java-alternatives -l
 #sudo nano /etc/systemd/system/tomcat.service
-   21  sudo systemctl daemon-reload
-   22  sudo systemctl start tomcat
-   23  sudo systemctl status tomcat
-   24  sudo ufw allow 8080
-   25  sudo ufw allow 22
-   26  sudo ufw enable
-   27  sudo systemctl enable tomcat
-   28  sudo nano /opt/tomcat/conf/tomcat-users.xml
-   29  sudo nano /opt/tomcat/webapps/manager/META-INF/context.xml
-   30  sudo nano /opt/tomcat/webapps/host-manager/META-INF/context.xml
-   31  sudo systemctl restart tomcat
-   32  ls -l
-   33  sudo apt install apache2
-   34  sudo find / -name apache
-   35  sudo find / -name apache.conf
-   36  sudo find / -name apache2.conf
-   37  ls -l /etc/apache2
-   38  cd /tmp
-   39  curl -O https://github.com/BobSimons/erddap/releases/download/v2.02/erddapContent.zip
-   40  unzip
-   41  sudo apt install unzip
-   42  unzip erddapContent.zip 
-   43  unzip erddapContent.zip
-   44  ls
-   45  rm erddapContent.zip 
-   46  wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddapContent.zip
-   47  unzip erddapContent.zip
-   48  mv content /opt/tomcat/
-   49  sudo mv content /opt/tomcat/
-   50  ls -l /opt/tomcat
-   51  sudo chown -R tomcat:tomcat /opt/tomcat/content
-   52  ls -l /opt/tomcat
-   53  sudo mkdir /home/erddap
-   54  sudo chown -R tomcat:tomcat /home/erddap
-   55  sudo nano /opt/tomcat/content/erddap/setup.xml 
-   56  sudo nano /opt/tomcat/conf/server.xml
-   57  sudo nano /opt/tomcat/conf/context.xml
-   58  sudo nano /etc/apache2/apache2.conf
-   59  sudo find / -name apachectl
-   60  /usr/sbin/apachectl -k graceful
-   64  wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddap.war
-   65  ls
-   66  mv erddap.war /opt/tomcat/webapps/erddap.war
-   67  sudo mv erddap.war /opt/tomcat/webapps/erddap.war
-   68  sudo chown tomcat:tomcat /opt/tomcat/webapps/erddap.war
-   69  ls -l /opt/tomcat/
-   70  ls -l /opt/tomcat/webapps/
-   71  sudo ls -l /opt/tomcat/webapps/
-   72  ls
-   73  mkdir /erddap_config
-   74  ls
-   75  pwd
-   76  mkdir erddap_config
-   77  ls
-   78  cd erddap_config/
+sudo systemctl daemon-reload
+sudo systemctl start tomcat
+sudo systemctl status tomcat
+#test tomcat welcome page http://<hostname>:8080
+#Possible firewall adjustments required
+#sudo ufw allow 8080
+#sudo ufw allow 22
+#sudo ufw enable
+#enable service start on boot
+sudo systemctl enable tomcat
+#configure tomcat user for management interfaces
+#copy files from git repo
+cp erddap_config/files/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
+cp erddap_config/files/mgr_context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
+cp erddap_config/files/hmgr_context.xml /opt/tomcat/webapps/host-manager/META-INF/context.xml
+#edit files if required (recommend edit tomcat-users.xml to more appropriate password
+#sudo nano /opt/tomcat/conf/tomcat-users.xml
+#sudo nano /opt/tomcat/webapps/manager/META-INF/context.xml
+#sudo nano /opt/tomcat/webapps/host-manager/META-INF/context.xml
+#restart tomcat
+sudo systemctl restart tomcat
+#Finished - Install and configure Tomcat
+###
+
+###
+#Install apache2 (TODO: is this required?)
+sudo apt install apache2
+#apply changes to apache2.conf as per ERDDAP instructions
+cp erddap_config/files/apache2.conf /etc/apache2/apache2.conf
+#sudo nano /etc/apache2/apache2.conf
+###
+
+###
+#Deploy and configure ERDDAP content zip file
+unzip erddapContent.zip
+sudo mv content /opt/tomcat/
+sudo chown -R tomcat:tomcat /opt/tomcat/content
+#create bigParentDirectory (location optional, but must be represented in setup.xml
+sudo mkdir /home/erddap
+sudo chown -R tomcat:tomcat /home/erddap
+cp erddap_config/files/setup.xml /opt/tomcat/content/erddap/setup.xml
+cp erddap_config/files/server.xml /opt/tomcat/conf/server.xml
+cp erddap_config/files/context.xml /opt/tomcat/conf/context.xml
+#sudo nano /opt/tomcat/content/erddap/setup.xml
+#sudo nano /opt/tomcat/conf/server.xml
+#sudo nano /opt/tomcat/conf/context.xml
+###
+
+###
+#Deploy WAR file
+sudo mv erddap.war /opt/tomcat/webapps/erddap.war
+sudo chown tomcat:tomcat /opt/tomcat/webapps/erddap.war
+###
+
+sudo systemctl restart tomcat
