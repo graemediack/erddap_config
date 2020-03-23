@@ -1,8 +1,8 @@
-/etc/systemd/system/tomcat.service
-/opt/tomcat/conf/tomcat-users.xml
-/opt/tomcat/webapps/manager/META-INF/context.xml
-/opt/tomcat/webapps/host-manager/META-INF/context.xml
-/opt/tomcat/content/erddap/setup.xml
-/opt/tomcat/conf/server.xml
-/opt/tomcat/conf/context.xml
-/etc/apache2/apache2.conf
+644,root:root,/etc/apache2/apache2.conf
+644,root:root,/etc/systemd/system/tomcat.service
+775,tomcat:tomcat,/opt/tomcat/content/erddap/setup.xml
+640,root:tomcat,/opt/tomcat/conf/tomcat-users.xml
+640,root:tomcat,/opt/tomcat/conf/server.xml
+640,root:tomcat,/opt/tomcat/conf/context.xml
+640,tomcat:tomcat,/opt/tomcat/webapps/manager/META-INF/context.xml
+640,tomcat:tomcat,/opt/tomcat/webapps/host-manager/META-INF/context.xml
