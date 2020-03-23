@@ -31,7 +31,7 @@ For ERD releases, we use
 If you want to encourage all users to use https (not http), 
   make the baseUrl the same as the baseHttpsUrl (see below).
 -->
-<baseUrl>http://52.142.144.182:8080</baseUrl>
+<baseUrl>http://<update_hostname>:8080</baseUrl>
 
 <!-- This is a variant of <baseUrl> which is used when 
 authentication is active and the user is logged in.
@@ -109,12 +109,12 @@ and you are using anti-virus software (e.g., McAfee) make sure McAfee
 Anti Virus Standard Protections : 
 Prevent mass mailing worms from sending mail" is un-checked.
 -->
-<emailFromAddress>graemediack@hotmail.com</emailFromAddress>
-<emailUserName>graemediack</emailUserName>
-<emailPassword>password</emailPassword> 
+<emailFromAddress></emailFromAddress>
+<emailUserName></emailUserName>
+<emailPassword></emailPassword> 
 <emailProperties></emailProperties>
 <emailSmtpHost></emailSmtpHost>
-<emailSmtpPort>25</emailSmtpPort>
+<emailSmtpPort></emailSmtpPort>
 
 
 <!-- Information about the ERDDAP administrator is used for the SOS and WMS 
@@ -178,7 +178,7 @@ During development or for other reasons, you might want to use a subset, e.g.,
 "(etopo.*|erdQSu101day|erdMHchla8day|erdGlobecBottle|erdBAssta5day|pmelTaoDySst)",
 so that ERDDAP quickly loads a dataset that you are interested in. 
 -->
-<datasetsRegex>.*</datasetsRegex>
+<datasetsRegex>etopo.*</datasetsRegex>
 
 <!-- If true, when you start up ERDDAP, some types of datasets (e.g., 
 EDDGridFromDap) will used cached information (.dds, .das, etc.) to reload
