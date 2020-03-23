@@ -49,7 +49,7 @@ systemctl enable tomcat
 cp erddap_config/files/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
 cp erddap_config/files/mgr_context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
 cp erddap_config/files/hmgr_context.xml /opt/tomcat/webapps/host-manager/META-INF/context.xml
-#edit files if required (recommend edit tomcat-users.xml to more appropriate password
+#edit files if required (recommend edit tomcat-users.xml to more appropriate password)
 #sudo nano /opt/tomcat/conf/tomcat-users.xml
 #sudo nano /opt/tomcat/webapps/manager/META-INF/context.xml
 #sudo nano /opt/tomcat/webapps/host-manager/META-INF/context.xml
@@ -79,7 +79,7 @@ chown -R tomcat:tomcat /home/erddap
 cp erddap_config/files/setup.xml /opt/tomcat/content/erddap/setup.xml
 cp erddap_config/files/server.xml /opt/tomcat/conf/server.xml
 cp erddap_config/files/context.xml /opt/tomcat/conf/context.xml
-#sudo nano /opt/tomcat/content/erddap/setup.xml
+#sudo nano /opt/tomcat/content/erddap/setup.xml - hostname must be updated
 #sudo nano /opt/tomcat/conf/server.xml
 #sudo nano /opt/tomcat/conf/context.xml
 ###
@@ -90,5 +90,7 @@ mv erddap.war /opt/tomcat/webapps/erddap.war
 chown tomcat:tomcat /opt/tomcat/webapps/erddap.war
 ###
 echo "Finished - Install and configure erdapp content"
-echo "starting tomcat"
-systemctl start tomcat
+echo "edit setup.xml, change hostname 'sudo nano /opt/tomcat/content/erddap/setup.xml'"
+echo "edit tomcat-users.xml, change password 'sudo nano /opt/tomcat/conf/tomcat-users.xml'"
+echo "start tomcat 'systemctl start tomcat'"
+
