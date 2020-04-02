@@ -5,42 +5,42 @@ SCRIPT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 #user defined variables for editing setup.xml, tomcat-users.xml
 echo "Enter a new password for tomcat-users.xml:"
 read
-sed -i 's/updatePassword/$REPLY/g' $SCRIPT_HOME/files/tomcat-users.xml
+sed -i "s/updatePassword/$REPLY/g" $SCRIPT_HOME/files/tomcat-users.xml
 echo "Enter device hostname/IP that will be used in the URL:"
 read
-sed -i 's/updateHostname/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateHostname/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your email address:"
 read
-sed -i 's/updateEmail/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateEmail/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your name:"
 read
-sed -i 's/updateName/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateName/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your company:"
 read
-sed -i 's/updateCompany/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateCompany/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your website"
 read
-sed -i 's/updateWebsite/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateWebsite/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your telephone:"
 read
-sed -i 's/updateTelephone/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateTelephone/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your address line 1:"
 read
-sed -i 's/updateAddressLine1/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateAddressLine1/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your town:"
 read
-sed -i 's/updateTown/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateTown/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your State or Province:"
 read
-sed -i 's/updateStateProvince/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateStateProvince/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your postcode:"
 read
-sed -i 's/updatePostcode/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updatePostcode/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your country:"
 read
-sed -i 's/updateCountry/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateCountry/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter a short quotation you like:"
-sed -i 's/updateQuote/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+sed -i "s/updateQuote/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 #install JDK
 apt install openjdk-8-jdk
 #install unzip
