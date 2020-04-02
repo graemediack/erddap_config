@@ -1,8 +1,46 @@
 #!/bin/bash
+#Gather variables
+#set SCRIPT_HOME to location of this script
 SCRIPT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-#update system
-apt update
-apt upgrade
+#user defined variables for editing setup.xml, tomcat-users.xml
+echo "Enter a new password for tomcat-users.xml:"
+read
+sed -i 's/updatePassword/$REPLY/g' $SCRIPT_HOME/files/tomcat-users.xml
+echo "Enter device hostname/IP that will be used in the URL:"
+read
+sed -i 's/updateHostname/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your email address:"
+read
+sed -i 's/updateEmail/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your name:"
+read
+sed -i 's/updateName/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your company:"
+read
+sed -i 's/updateCompany/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your website"
+read
+sed -i 's/updateWebsite/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your telephone:"
+read
+sed -i 's/updateTelephone/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your address line 1:"
+read
+sed -i 's/updateAddressLine1/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your town:"
+read
+sed -i 's/updateTown/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your State or Province:"
+read
+sed -i 's/updateStateProvince/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your postcode:"
+read
+sed -i 's/updatePostcode/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter your country:"
+read
+sed -i 's/updateCountry/$REPLY/g' $SCRIPT_HOME/files/setup.xml
+echo "Enter a short quotation you like:"
+sed -i 's/updateQuote/$REPLY/g' $SCRIPT_HOME/files/setup.xml
 #install JDK
 apt install openjdk-8-jdk
 #install unzip
@@ -91,7 +129,10 @@ mv erddap.war /opt/tomcat/webapps/erddap.war
 chown tomcat:tomcat /opt/tomcat/webapps/erddap.war
 ###
 echo "Finished - Install and configure erdapp content"
-echo "edit setup.xml, change hostname 'sudo nano /opt/tomcat/content/erddap/setup.xml'"
-echo "edit tomcat-users.xml, change password 'sudo nano /opt/tomcat/conf/tomcat-users.xml'"
-echo "start tomcat 'systemctl start tomcat'"
+echo "bigParentDirectory = /home/erddap"
+echo "tomcat directory: /opt/tomcat"
+echo "Default datasets subset to 'etopo.*'"
+echo "tomcat admin username is: admin"
+echo "edit this here: /opt/tomcat/conf/tomcat-users.xml'"
+echo "start tomcat 'sudo systemctl start tomcat'"
 

@@ -31,7 +31,7 @@ For ERD releases, we use
 If you want to encourage all users to use https (not http), 
   make the baseUrl the same as the baseHttpsUrl (see below).
 -->
-<baseUrl>http://<update_hostname>:8080</baseUrl>
+<baseUrl>http://updateHostname:8080</baseUrl>
 
 <!-- This is a variant of <baseUrl> which is used when 
 authentication is active and the user is logged in.
@@ -64,7 +64,7 @@ See the email account settings below.
 Whether or not you set up the email system, all potential email messages 
 are logged to an emailLogYEAR-MONTH.txt file in [bigParentDirectory]/logs/.
 -->
-<emailEverythingTo>graemediack@hotmail.com</emailEverythingTo>
+<emailEverythingTo>updateEmail</emailEverythingTo>
 <!-- optional: 
 <emailDailyReportsTo>your.boss@yourInstitution.edu</emailDailyReportsTo>
 -->
@@ -119,17 +119,17 @@ Prevent mass mailing worms from sending mail" is un-checked.
 
 <!-- Information about the ERDDAP administrator is used for the SOS and WMS 
 servers. -->
-<adminInstitution>The Inst</adminInstitution>
-<adminInstitutionUrl>http://theinst.com</adminInstitutionUrl>
-<adminIndividualName>Graeme Diack</adminIndividualName>
+<adminInstitution>updateCompany</adminInstitution>
+<adminInstitutionUrl>updateWebsite</adminInstitutionUrl>
+<adminIndividualName>updateName</adminIndividualName>
 <adminPosition>ERDDAP administrator</adminPosition>
-<adminPhone>01234567890</adminPhone>
-<adminAddress>1 Address</adminAddress>
-<adminCity>Town</adminCity>
-<adminStateOrProvince>Province</adminStateOrProvince>
-<adminPostalCode>123456</adminPostalCode>
-<adminCountry>Scotland</adminCountry>
-<adminEmail>graemediack@hotmail.com</adminEmail>
+<adminPhone>updateTelephone</adminPhone>
+<adminAddress>updateAddressLine1</adminAddress>
+<adminCity>updateTown</adminCity>
+<adminStateOrProvince>updateStateProvince</adminStateOrProvince>
+<adminPostalCode>updatePostcode</adminPostalCode>
+<adminCountry>updateCountry</adminCountry>
+<adminEmail>updateEmail</adminEmail>
 
 <!-- Normally, if you have a EDDGridFromErddap or EDDTableFromErddap 
 dataset in your datasets.xml, it will try to subscribe to the remote 
@@ -144,7 +144,7 @@ a given EDD...FromErddap dataset.
 For each fromErddap dataset that doesn't subscribe to the remote 
 ERDDAP dataset, you should set <reloadEveryNMinutes> to a smaller 
 number so that the local dataset stays reasonably up-to-date. -->
-<subscribeToRemoteErddapDataset>true</subscribeToRemoteErddapDataset>
+<subscribeToRemoteErddapDataset>false</subscribeToRemoteErddapDataset>
 
 <!-- The font family to be used for all of the text in images.
 See the fontFamily documentation on the ERDDAP setup.html#fonts web page. -->
@@ -160,7 +160,7 @@ But if you you think someone is abusing the flag system,
 change this text again, restart ERDDAP, and send
 all of the users of the flag system the relevant new flagKeys
 (see the list in the Daily Report). -->
-<flagKeyKey>Quote</flagKeyKey>
+<flagKeyKey>updateQuote</flagKeyKey>
 
 
 <!-- ******** End of MUST change settings.  ******************************** -->
