@@ -120,7 +120,7 @@ Prevent mass mailing worms from sending mail" is un-checked.
 <!-- Information about the ERDDAP administrator is used for the SOS and WMS 
 servers. -->
 <adminInstitution>updateCompany</adminInstitution>
-<adminInstitutionUrl>updateWebsite</adminInstitutionUrl>
+<adminInstitutionUrl>http://updateWebsite</adminInstitutionUrl>
 <adminIndividualName>updateName</adminIndividualName>
 <adminPosition>ERDDAP administrator</adminPosition>
 <adminPhone>updateTelephone</adminPhone>
