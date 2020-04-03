@@ -28,27 +28,27 @@ Some important information if you wish to use it for testing:
 * Assumes minimum ram of 4GB (java options set to 2GB in *tomcat.service* file
 
 ### Files and Directories:
-#### deploy_erddap.sh
-the bash script
-#### file_list
-the list of customised files rolled out during install
-#### files directory
-directory containing files rolled out during install
-##### apache2.conf
-Apache timeout modifications as per [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 2. (note this file used to be called httpd.conf)
-##### context.xml
-Edits applied as per [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 2.
-##### server.xml
-Edits applied as per [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 2.
-##### setup.xml
-Edited during script run with user defined values as per [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 3.
-##### Tomcat Config Files:
-###### hmgr_context.xml (file name change)
-Applies web management configuration changes to Tomcat (copied as */opt/tomcat/webapps/host-manager/META-INF/context.xml*)
-###### mgr_context.xml (file name change)
-Applies web management configuration changes to Tomcat (copied as */opt/tomcat/webapps/manager/META-INF/context.xml*)
-###### tomcat-users.xml
-Applies web management configuration changes to Tomcat (add admin user *admin*)
-###### tomcat.service
-Applies tomcat configuration and enables start on boot
+* #### deploy_erddap.sh
+    the bash script
+* #### file_list
+    the list of customised files rolled out during install
+* #### files directory
+    directory containing files rolled out during install
+    * ##### apache2.conf
+        Apache timeout modifications as per [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 2. (note this file used to be called httpd.conf)
+    * ##### context.xml
+        Edits applied as per [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 2.
+    * ##### server.xml
+        Edits applied as per [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 2.
+    * ##### setup.xml
+        Edited during script run with user defined values as per [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 3.
+    * ##### Tomcat Config Files:
+        * ###### hmgr_context.xml (file name change)
+            Applies web management configuration changes to Tomcat (copied as */opt/tomcat/webapps/host-manager/META-INF/context.xml*)
+        * ###### mgr_context.xml (file name change)
+            Applies web management configuration changes to Tomcat (copied as */opt/tomcat/webapps/manager/META-INF/context.xml*)
+        * ###### tomcat-users.xml
+            Applies web management configuration changes to Tomcat (add admin user *admin*)
+        * ###### tomcat.service
+            Applies tomcat configuration and enables start on boot
 
