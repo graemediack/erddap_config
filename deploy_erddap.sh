@@ -40,6 +40,7 @@ echo "Enter your country:"
 read
 sed -i "s/updateCountry/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter a short quotation you like:"
+read
 sed -i "s/updateQuote/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 #install JDK
 apt install openjdk-8-jdk
