@@ -18,7 +18,11 @@ sed -i "s/updateName/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your company:"
 read
 sed -i "s/updateCompany/$REPLY/g" $SCRIPT_HOME/files/setup.xml
-echo "Enter your website (not including http://)"
+echo "Enter your website..."
+echo "...http or https?"
+read
+sed -i "s/updateProtocol/$REPLY/g" $SCRIPT_HOME/files/setup.xml
+echo "... domain name?"
 read
 sed -i "s/updateWebsite/$REPLY/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your telephone:"
