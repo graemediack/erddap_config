@@ -31,7 +31,7 @@ For ERD releases, we use
 If you want to encourage all users to use https (not http), 
   make the baseUrl the same as the baseHttpsUrl (see below).
 -->
-<baseUrl>http://updateHostname:8080</baseUrl>
+<baseUrl>updateProtocol://updateHostname:8080</baseUrl>
 
 <!-- This is a variant of <baseUrl> which is used when 
 authentication is active and the user is logged in.
