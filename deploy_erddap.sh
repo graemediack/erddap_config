@@ -7,7 +7,7 @@ echo "Enter a new password for tomcat-users.xml:"
 read
 sed -i "s/updatePassword/$REPLY/g" $SCRIPT_HOME/files/tomcat-users.xml
 echo "Enter device hostname/IP that will be used in the URL:"
-HOSTNAME_STR = read
+read HOSTNAME_STR
 sed -i "s/updateHostname/$HOSTNAME_STR/g" $SCRIPT_HOME/files/setup.xml
 echo "Enter your email address:"
 read
