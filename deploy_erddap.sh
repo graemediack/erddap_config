@@ -60,7 +60,7 @@ wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddap.war
 #Install and configure Tomcat
 #create tomcat group and user
 groupadd tomcat
-useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+useradd -s /bin/bash -g tomcat -d /opt/tomcat -p '*' tomcat
 #create tomcat home directory
 mkdir /opt/tomcat
 #unpack tomcat files to tomcat home directory
