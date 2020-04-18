@@ -56,7 +56,7 @@ function userinfowrite () {
 
 main
 # update apt repos
-apt --yes update || echo "apt update failed :(" && exit
+apt --yes update
 #install JDK
 apt --yes install openjdk-8-jdk || echo "JDK v8 installation failed :(" && exit
 #install unzip
