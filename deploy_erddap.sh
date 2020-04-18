@@ -58,9 +58,9 @@ main
 # update apt repos
 apt --yes update
 #install JDK
-apt --yes install openjdk-8-jdk || echo "JDK v8 installation failed :(" && exit
+apt --yes install openjdk-8-jdk
 #install unzip
-apt --yes install unzip || echo "unzip installation failed :(" && exit
+apt --yes install unzip
 ###
 #Download files (note: tmp dir will clear out on reboots, optionally download to homedir and add step to delete at the end)
 cd /tmp
