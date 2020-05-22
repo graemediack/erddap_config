@@ -9,13 +9,36 @@ SCRIPT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #user defined variables for editing setup.xml, tomcat-users.xml
 function main() {
-
-    userinfo
-    userinfowrite
+    read -p "Enter setup.xml detail now? (Alternative is to update setup.xml manually after install) y or n:" SETUP_RESPONSE
+    if [ $SETUP_RESPONSE -eq "n" ]
+        then 
+            userInfoDefaults
+        else
+            userInfoRead
+    fi
+    userInfoWrite
 
 }
 
-function userinfo() {
+function userInfoDefaults() {
+
+    read -p "Enter a new password for tomcat-users.xml:" TOMCAT_ADMIN_PASSWD
+    $HOSTNAME_STR = "default.host"
+    $EMAIL_ADDR = "defaulterddap@default.com"
+    $USER_NAME = "User Name"
+    $USER_CO = "User Company"
+    $WEB_PRTCL = "http"
+    $WEB_DOM = "user.default.company"
+    $USER_PHONE = "0123456789"
+    $ADDR_ONE = "Addr One"
+    $ADDR_TWO = "Addr Two"
+    $ADDR_THREE = "Addr Three"
+    $ADDR_FOUR = "Addr Four"
+    $ADDR_FIVE = "Addr Five"
+    $USER_QUOTE = "Default Quotation"
+
+}
+function userInfoRead() {
 
     read -p "Enter a new password for tomcat-users.xml:" TOMCAT_ADMIN_PASSWD
     read -p "Enter device hostname/IP that will be used in the URL:" HOSTNAME_STR
@@ -35,7 +58,7 @@ function userinfo() {
 
 }
 
-function userinfowrite () {
+function userInfoWrite () {
 
     sed -i "s/updatePassword/$TOMCAT_ADMIN_PASSWD/g" $SCRIPT_HOME/files/tomcat-users.xml
     sed -i "s/updateHostname/$HOSTNAME_STR/g" $SCRIPT_HOME/files/setup.xml
