@@ -87,7 +87,7 @@ apt --yes install unzip
 ###
 #Download files (note: tmp dir will clear out on reboots, optionally download to homedir and add step to delete at the end)
 cd /tmp
-wget https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-8/v8.5.53/bin/apache-tomcat-8.5.53.tar.gz
+wget https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/v9.0.48/bin/apache-tomcat-9.0.48.tar.gz
 wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddapContent.zip
 wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddap.war
 ###
