@@ -19,11 +19,13 @@ Some important information if you wish to use it for testing:
 * The file *setup.xml* requires user personalised edits, and so I use a big ugly 'read & sed' section to capture user information. Read the notes in setup.xml as per [ERDDAP guidelines](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html).
 * Some deviations from the [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html):
     * Uses default Aptitude package for OpenJDK Version 8 (*openjdk-8-jdk*) including default path (view path with *sudo update-java-alternatives -l*)
-    * Installs and configures Tomcat version 8.5.53 as per [Digital Ocean guide](https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-16-04)
+    * Installs and configures Tomcat version 9.0.48 as per [Digital Ocean guide](https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-16-04)
+        * Tomcat version upgraded to 9.0.48 but still configured as per DO guide above
         * directory /opt/tomcat
         * web management configured
         * tomcat.service file created and enabled for autostart on boot
             * This service file includes options used in *setenv.sh* therefore I don't create the *setenv.sh* file mentioned in the [guide](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) section 2.
+        * NOTE - Tomcat version might go stale, error messages such as *cannot find directory /opt/tomcat/conf* at the end of the script may be caused by this. Check the following address to confirm version number https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/ is still v9.0.48, if not then modify the full URL in *deploy_erddap.sh*
 * Tested only on Ubuntu 19.10
 * Assumes minimum ram of 4GB (java options set to 2GB in *tomcat.service* file
 
