@@ -22,6 +22,7 @@ function main() {
 
 function userInfoDefaults() {
 
+    read -p "Enter desired ERDDAP release, e.g. 2.14, 2.10 etc. See https://github.com/BobSimons/erddap/releases/ for latest:" ERDDAP_RELEASE
     read -p "Enter desired tomcat version 8 or 9:" TOMCAT_VERSION
     read -p "Enter a new password for tomcat-users.xml:" TOMCAT_ADMIN_PASSWD
     HOSTNAME_STR="default.host"
@@ -41,6 +42,7 @@ function userInfoDefaults() {
 }
 function userInfoRead() {
 
+    read -p "Enter desired ERDDAP release, e.g. 2.14, 2.10 etc. See https://github.com/BobSimons/erddap/releases/ for latest:" ERDDAP_RELEASE
     read -p "Enter desired tomcat version 8 or 9:" TOMCAT_VERSION
     read -p "Enter a new password for tomcat-users.xml:" TOMCAT_ADMIN_PASSWD
     read -p "Enter device hostname/IP that will be used in the URL:" HOSTNAME_STR
@@ -94,8 +96,8 @@ cd /tmp
 TOMCAT_RELEASE=`curl --silent https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-$TOMCAT_VERSION/ | grep v$TOMCAT_VERSION | awk '{split($5,c,">v") ; split(c[2],d,"/") ; print d[1]}'`
 wget https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-$TOMCAT_VERSION/v$TOMCAT_RELEASE/bin/apache-tomcat-$TOMCAT_RELEASE.tar.gz
 
-wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddapContent.zip
-wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddap.war
+wget https://github.com/BobSimons/erddap/releases/download/v$ERDDAP_RELEASE/erddapContent.zip
+wget https://github.com/BobSimons/erddap/releases/download/v$ERDDAP_RELEASE/erddap.war
 ###
 #Install and configure Tomcat
 #create tomcat group and user
