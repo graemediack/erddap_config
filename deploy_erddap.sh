@@ -22,6 +22,7 @@ function main() {
 
 function userInfoDefaults() {
 
+    read -p "Enter desired tomcat version 8 or 9:" TOMCAT_VERSION
     read -p "Enter a new password for tomcat-users.xml:" TOMCAT_ADMIN_PASSWD
     HOSTNAME_STR="default.host"
     EMAIL_ADDR="defaulterddap@default.com"
@@ -40,6 +41,7 @@ function userInfoDefaults() {
 }
 function userInfoRead() {
 
+    read -p "Enter desired tomcat version 8 or 9:" TOMCAT_VERSION
     read -p "Enter a new password for tomcat-users.xml:" TOMCAT_ADMIN_PASSWD
     read -p "Enter device hostname/IP that will be used in the URL:" HOSTNAME_STR
     read -p "Enter your email address:" EMAIL_ADDR
@@ -87,7 +89,11 @@ apt --yes install unzip
 ###
 #Download files (note: tmp dir will clear out on reboots, optionally download to homedir and add step to delete at the end)
 cd /tmp
-wget https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-9/v9.0.48/bin/apache-tomcat-9.0.48.tar.gz
+
+#Setup tomcat version latest url as per https://stackoverflow.com/questions/51258801/how-to-get-always-latest-link-to-download-tomcat-server-using-shell
+TOMCAT_RELEASE=`curl --silent https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-$TOMCAT_VERSION/ | grep v$TOMCAT_VERSION | awk '{split($5,c,">v") ; split(c[2],d,"/") ; print d[1]}'`
+wget https://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-$TOMCAT_VERSION/v$TOMCAT_RELEASE/bin/apache-tomcat-$TOMCAT_RELEASE.tar.gz
+
 wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddapContent.zip
 wget https://github.com/BobSimons/erddap/releases/download/v2.02/erddap.war
 ###
