@@ -3,8 +3,8 @@ ERDDAP is a data server that gives you a simple, consistent way to download subs
 https://coastwatch.pfeg.noaa.gov/erddap/index.html
 
 # This repository
-Simple bash script and supporting files that implement the ERDDAP web application version 2.02 on Ubuntu
-This script covers my own needs, implementing ERDDAP v2.02 on an Ubuntu server in a few minutes, and I have created it mostly as a learning exercise, and only partly as a convenient tool while I experiment with ERDDAP.
+Simple bash script and supporting files that implement the ERDDAP web application on Ubuntu
+This script covers my own needs, implementing ERDDAP on an Ubuntu server in a few minutes, and I have created it mostly as a learning exercise, and only partly as a convenient tool while I experimented with ERDDAP. If you know Docker you'd be better using Axioms ERDDAP but this might let you tinker a little first.
 
 ## Instructions
 * Clone repo to Ubuntu server: git clone https://github.com/graemediack/erddap_config.git
