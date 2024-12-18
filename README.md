@@ -1,3 +1,6 @@
+# ARCHIVED
+ERDDAP has moved on and this repository is redundant. See https://github.com/ERDDAP/erddap for the latest and greatest new versions of ERDDAP and how to set one up for yourself!
+
 # ERDDAP
 ERDDAP is a data server that gives you a simple, consistent way to download subsets of gridded and tabular scientific datasets in common file formats and make graphs and maps.
 https://coastwatch.pfeg.noaa.gov/erddap/index.html
